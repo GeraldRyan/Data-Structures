@@ -83,8 +83,8 @@ class LinkedList:
         elif self.head.get_next() == None:
             value = self.head.get_value()
             # Back To Beginning state
-            self.head.data = None
-            self.head.next = None
+            # self.head.data = None
+            self.__init__()
             return value
         else:
             current = self.head
@@ -102,7 +102,7 @@ class LinkedList:
     def get_list(self):
         array = []
         current = self.head
-        while current.get_next() is not None:
+        while (current.get_next() is not None and current is not None):
             array.append(current.data)
             current = current.get_next()
         array.append(current.data)
@@ -110,7 +110,7 @@ class LinkedList:
     
     def get_length(self):
         # If head is None then length is zero. IT SEEMS THIS CODE IS NOT WORKING
-        if self.head.data == None:
+        if self.head == None:
             return 0
         # Otherwise start at one
         length = 1

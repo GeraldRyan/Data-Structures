@@ -10,7 +10,7 @@ return elements in Last In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
 """
-class Stackk:
+class Stackd:
     def __init__(self):
         self.size = 0
         self.storage = []
@@ -101,15 +101,17 @@ class LinkedList:
     
     def get_list(self):
         array = []
-        current = self.head
-        while (current.get_next() is not None and current is not None):
+        if self.head is not None:
+            current = self.head
+            while (current.get_next() is not None and current is not None):
+                array.append(current.data)
+                current = current.get_next()
             array.append(current.data)
-            current = current.get_next()
-        array.append(current.data)
         return array
+        
     
     def get_length(self):
-        # If head is None then length is zero. IT SEEMS THIS CODE IS NOT WORKING
+        # If head is None then length is zero. 
         if self.head == None:
             return 0
         # Otherwise start at one
@@ -144,8 +146,7 @@ class Stack:
         self.storage = LinkedList()
 
     def __len__(self):
-        # return self.storage.get_length()
-        return len(self.storage.get_list())
+        return self.storage.get_length()
 
     def push(self, value):
         self.storage.add(value)
@@ -161,7 +162,7 @@ class Stack:
 
 
 test_list = Stack()
-# print("EMPTY LIST", test_list.storage.get_list())
+print("EMPTY LIST", test_list.storage.get_list())
 test_list.push(100)
 test_list.push(101)
 test_list.push(105)
@@ -169,3 +170,6 @@ print("FULL LIST", test_list.storage.get_list())
 test_list.pop()
 # test_list.pop()
 print("Less Full List", test_list.storage.get_list())
+test_list.pop()
+test_list.pop()
+print("Empty again", test_list.storage.get_list())

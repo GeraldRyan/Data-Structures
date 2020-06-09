@@ -24,6 +24,7 @@ class ListNode:
         self.prev = ListNode(value, current_prev, self)
         if current_prev:
             current_prev.next = self.prev
+        return self.prev
 
     """Rearranges this ListNode's previous and next pointers
     accordingly, effectively deleting this ListNode."""
@@ -50,7 +51,8 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        pass
+        new_head = self.head.insert_before(value)
+        self.head = new_head
         
 
     """Removes the List's current head node, making the

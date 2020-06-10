@@ -28,6 +28,7 @@ class ListNode:
 
     """Rearranges this ListNode's previous and next pointers
     accordingly, effectively deleting this ListNode."""
+    
     def delete(self):
         if self.prev:
             self.prev.next = self.next
@@ -127,9 +128,17 @@ class DoublyLinkedList:
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        node_return = node
-        node.delete()
-        return node_return
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        if self.head == node:
+            self.head = self.head.next
+        if self.tail == node:
+            self.tail = self.tail.prev
+        else:
+            # node_return = node
+            node.delete()
+            # return node_return
         
     """Returns the highest value currently in the list"""
     def get_max(self):

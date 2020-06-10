@@ -55,7 +55,7 @@ class DoublyLinkedList:
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
         if self.head is None:
-            self.head = ListNode(value)
+            self.head = self.tail = ListNode(value) 
             
         else:
             new_head = self.head.insert_before(value)
@@ -125,22 +125,8 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        old_tail = self.tail
-        old_head = self.head
-        if len(self.get_values) ==2:
-            self.head = old_tail
-        self.tail = node
-        self.tail.next = old_tail.next
-        self.tail.prev = old_tail.prev
-        node.next.prev = node.prev
-        node.prev = self.tail
-        node.next = self.tail.next
-        self.tail = node
-        if node.prev.prev is None:
-            self.head = node.prev
-
-            
-
+        self.delete(node)
+        self.add_to_tail(node.value)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
@@ -206,32 +192,32 @@ class DoublyLinkedList:
         # self.assertEqual(self.dll.head.value, 3)
         # self.assertEqual(self.dll.head.next.value, 29)
         # self.assertEqual(len(self.dll), 3)
-# print("DLL added", dlll.get_values(), len(dlll))
+# # print("DLL added", dlll.get_values(), len(dlll))
 
-dll = DoublyLinkedList(ListNode(1))
-print("DLL Values", dll.get_values())
+# dll = DoublyLinkedList(ListNode(1))
+# print("DLL Values", dll.get_values())
 
-dll.add_to_head(40)
-print("DLL Values", dll.get_values())
+# dll.add_to_head(40)
+# print("DLL Values", dll.get_values())
 
-# assertEqual(self.dll.tail.value, 1)
-# assertEqual(self.dll.head.value, 40)
-dll.add_to_head(13)
-print("DLL Values", dll.get_values())
+# # assertEqual(self.dll.tail.value, 1)
+# # assertEqual(self.dll.head.value, 40)
+# dll.add_to_head(13)
+# print("DLL Values", dll.get_values())
 
-dll.move_to_end(dll.head)
-print("DLL Values", dll.get_values())
+# # dll.move_to_end(dll.head)
+# # print("DLL Values", dll.get_values())
 
-# assertEqual(self.dll.tail.value, 40)
-# assertEqual(self.dll.tail.prev.value, 1)
-# assertEqual(len(self.dll), 2)
+# # assertEqual(self.dll.tail.value, 40)
+# # assertEqual(self.dll.tail.prev.value, 1)
+# # assertEqual(len(self.dll), 2)
 
-dll.add_to_tail(4)
-print("DLL Values", dll.get_values())
+# dll.add_to_tail(4)
+# print("DLL Values", dll.get_values())
 
-# dll.move_to_end(dll.head.next)
-print("DLL Values", dll.get_values())
+# # dll.move_to_end(dll.head.next)
+# print("DLL Values", dll.get_values())
 
-# assertEqual(self.dll.tail.value, 40)
-# assertEqual(self.dll.tail.prev.value, 4)
-# assertEqual(len(self.dll), 3)
+# # assertEqual(self.dll.tail.value, 40)
+# # assertEqual(self.dll.tail.prev.value, 4)
+# # assertEqual(len(self.dll), 3)

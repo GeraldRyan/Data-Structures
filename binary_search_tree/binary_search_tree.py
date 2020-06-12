@@ -9,6 +9,26 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from collections import deque
+
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = LinkedList()
+    
+#     def __len__(self):
+#         return self.storage.get_length()
+
+#     def enqueue(self, value):
+#         self.storage.add_to_tail(value)
+
+#     def dequeue(self):
+#         if not self.storage.get_length == 0:
+#             return self.storage.remove_head()
+#         else:
+#             return None
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -97,12 +117,39 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        
+        queue = deque()
+        queue.append(self)
+        while (len(queue) > 0):
+            current = queue.popleft()
+            print(current.value)
+            if current.left: 
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = []
+        stack.append(self)
+        while (len(stack) > 0):
+            current = stack.pop()
+            print(current.value)
+            if current.left:
+                stack.append(current.left)
+            if current.right:
+                stack.append(current.right) 
+
+        
+
+        # print(self.value)
+        # if not self: 
+        #     return False
+        # if self.left:
+        #     self.left.in_order_print(self)
+        # if self.right:
+        #     self.right.in_order_print(self)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -111,6 +158,6 @@ class BSTNode:
     def pre_order_dft(self, node):
         pass
 
-    # Print Post-order recursive DFT
+    # # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass

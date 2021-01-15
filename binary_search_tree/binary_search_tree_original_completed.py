@@ -76,7 +76,7 @@ class BSTNode:
         if self.right:
             return self.right.get_max()
         else:
-            
+
             return self.value
 
 
@@ -91,12 +91,6 @@ class BSTNode:
             self.left.for_each(fn)
         if self.right:
             self.right.for_each(fn)
-
-
-
-
-
-
 
 
 

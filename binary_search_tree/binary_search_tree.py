@@ -82,6 +82,7 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node=None):
+        # Left Root Right
         # depth traversal can be recursive or with a stack. This is the nature of trees
         if node:
             if node.left:
@@ -133,12 +134,30 @@ class BSTNode:
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
-    def pre_order_dft(self):
-        pass
+    # Left leaf parent node right leaf up (hits root before right branch)
+    # Root LeftNode-cascades RightNodes-cascade
+    def pre_order_dft(self, node=None):
+        if not self: 
+            return False
+        if self: 
+            print(self.value) # start at root, or relative root
+        if self.left:
+            self.left.pre_order_dft() # the placemennt of recursive call creates a de facto stack
+        if self.right:
+            self.right.pre_order_dft()
+        
 
     # Print Post-order recursive DFT
-    def post_order_dft(self):
-        pass
+    # left leaf right leaf parent node of each - hits root last
+    # LeftLeaf RightLeaf Parent 
+    def post_order_dft(self, node=None):
+        if not self:
+            return False
+        if self.left:
+            self.left.post_order_dft()
+        if self.right:
+            self.right.post_order_dft()
+        print(self.value)
 
 """
 This code is necessary for testing the `print` methods
@@ -156,10 +175,10 @@ bst.insert(2)
 bst.bft_print()
 bst.dft_print()
 
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
+print("elegant methods")
+print("pre order")
+bst.pre_order_dft()
 # print("in order")
 # bst.in_order_dft()
-# print("post order")
-# bst.post_order_dft()  
+print("post order")
+bst.post_order_dft()  

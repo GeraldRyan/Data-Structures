@@ -28,7 +28,6 @@ from collections import deque
 #         else:
 #             return None
 
-
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -77,6 +76,7 @@ class BSTNode:
         if self.right:
             return self.right.get_max()
         else:
+            
             return self.value
 
 
